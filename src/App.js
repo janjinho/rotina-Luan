@@ -1,3 +1,5 @@
+//João Vitor Anchieta, Gabriel de França e Eduarda Oliveira
+
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
@@ -11,6 +13,7 @@ function App() {
   const [filterCategory, setFilterCategory] = useState('todas');
   const [selectedTask, setSelectedTask] = useState(null);
   const [isNameSet, setIsNameSet] = useState(false);
+  const [message, setMessage] = useState(''); 
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -85,6 +88,12 @@ function App() {
     }
   };
 
+  const handleSubmit = () => {
+    // Simulação de envio de dados
+    setMessage('Dados enviados com sucesso!');
+    setTimeout(() => setMessage(''), 3000); // Remove a mensagem após 3 segundos
+  };
+
   return (
     <div>
       {!isNameSet ? ( 
@@ -96,6 +105,7 @@ function App() {
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               placeholder="Digite seu nome"
+              onKeyPress={(e) => e.key === 'Enter' && handleNameSubmit()}
             />
             <button onClick={handleNameSubmit}>Confirmar</button>
           </div>
@@ -176,6 +186,8 @@ function App() {
                 </div>
               ))}
             </div>
+            <button onClick={handleSubmit}>Enviar Dados</button>
+            {message && <div className="message">{message}</div>}
           </div>
         </div>
       )}
