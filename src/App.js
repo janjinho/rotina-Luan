@@ -91,7 +91,7 @@ function App() {
   const handleSubmit = () => {
     // Simulação de envio de dados
     setMessage('Dados enviados com sucesso!');
-    setTimeout(() => setMessage(''), 3000); // Remove a mensagem após 3 segundos
+    setTimeout(() => setMessage(''), 3000);
   };
 
   return (
@@ -149,7 +149,26 @@ function App() {
               <button onClick={handleToggleDarkMode}>
                 Modo {darkMode ? 'Claro' : 'Escuro'}
               </button>
+              <div className="filter-area">
+              <label>Filtrar por Categoria:</label>
+              <select
+                id="filter-category-select"
+                value={filterCategory}
+                onChange={(e) => setFilterCategory(e.target.value)}
+              >
+                <option value="todas">Todas</option>
+                <option value="estudos">Estudos</option>
+                <option value="trabalho">Trabalho</option>
+                <option value="saude-mental">Saúde Mental</option>
+                <option value="saude-fisica">Saúde Física</option>
+                <option value="lazer">Lazer</option>
+                <option value="casa">Casa</option>
+                <option value="urgente">Urgente</option>
+                <option value="nenhuma">Nenhuma</option>
+              </select>
             </div>
+            </div>
+            
           </header>
           <div className="container">
             <div className="task-container">
